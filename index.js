@@ -39,7 +39,7 @@ app.get('/api/history', (req, res) => {
 
 // Serve HTML
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(80, () => console.log('Server running on port 80'));
