@@ -1,4 +1,4 @@
-# Simple Node Repo
+# Simple NodeJs Repo
 
 Simple node.js app that servers  "Welcome to CLOUD ASEEM  & Credit with Thanks to - A Monk in Cloud"
 
