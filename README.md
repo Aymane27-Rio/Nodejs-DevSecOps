@@ -1,6 +1,6 @@
 # Simple NodeJs Repo
 
-Simple node.js app that tests if a website is functioning properly
+Simple node.js website for the History of the Roman Empire
 
 ## Step 1: Install NodeJS and NPM using nvm
 Install node version manager (nvm) by typing the following at the command line interface.
@@ -55,6 +55,7 @@ Get inside the directory and Install Packages
 ```bash
 cd nodejs-on-ec2
 npm install
+npm install express
 ```
 
 Start the application
