@@ -61,10 +61,5 @@ Start the application
 To start the application, run the following command in the terminal:
 
 ```bash
-npm start
-```
-If you want to run it in the background:
-
-```bash
-nohup npm start &
+node index.js
 ```
