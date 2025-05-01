@@ -110,28 +110,34 @@ app.get('/history', (req, res) => {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Roman History</title>
+      <title>Imperial Roman History</title>
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Cinzel:wght@700&display=swap');
         body {
           margin: 0;
           padding: 0;
           font-family: 'Noto Serif', serif;
-          background: #F5E7C1; /* Roman travertine/parchment color */
-          color: #3A3226; /* Dark brown for text */
+          background: #2A1F1D url('https://www.transparenttextures.com/patterns/parchment.png'); /* Aged parchment */
+          color: #E8D8B0; /* Aged gold text */
           line-height: 1.6;
         }
         .container {
           max-width: 900px;
-          margin: 0 auto;
+          margin: 2rem auto;
           padding: 2rem;
-          background: rgba(255, 255, 255, 0.8);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          background: rgba(42, 31, 29, 0.85); /* Deep maroon transparency */
+          border: 1px solid #6E3B3B;
+          box-shadow: 0 0 20px rgba(110, 59, 59, 0.5);
         }
         h1 {
-          color: #8B0000; /* Roman red */
+          font-family: 'Cinzel', serif;
+          color: #C19A6B; /* Gilded gold */
           text-align: center;
-          border-bottom: 2px solid #E8C070; /* Gold accent */
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
+          text-shadow: 2px 2px 4px #000;
+          letter-spacing: 2px;
+          border-bottom: 2px solid #6E3B3B;
           padding-bottom: 1rem;
         }
         .timeline-event {
@@ -139,41 +145,53 @@ app.get('/history', (req, res) => {
           display: flex;
           align-items: center;
           gap: 2rem;
-          padding: 1rem;
-          background: rgba(255, 255, 255, 0.9);
-          border-left: 4px solid #8B0000;
+          padding: 1.5rem;
+          background: rgba(58, 40, 33, 0.7); /* Aged bronze */
+          border-left: 5px solid #C19A6B;
+          transition: transform 0.3s;
+        }
+        .timeline-event:hover {
+          transform: translateX(10px);
+          background: rgba(58, 40, 33, 0.9);
         }
         .event-image {
           width: 200px;
           height: 150px;
           object-fit: cover;
-          border: 2px solid #E8C070;
+          border: 3px solid #6E3B3B;
+          filter: sepia(30%) brightness(90%);
         }
         .event-content {
           flex: 1;
         }
         .event-year {
+          font-family: 'Cinzel', serif;
           font-weight: bold;
-          color: #8B0000;
-          font-size: 1.2rem;
+          color: #C19A6B;
+          font-size: 1.3rem;
         }
         .event-title {
-          font-size: 1.5rem;
+          font-family: 'Cinzel', serif;
+          font-size: 1.8rem;
           margin: 0.5rem 0;
-          color: #3A3226;
+          color: #E8D8B0;
+        }
+        .event-description {
+          font-style: italic;
         }
         .back-link {
           display: inline-block;
           margin-top: 2rem;
-          color: #8B0000;
+          color: #C19A6B;
           text-decoration: none;
-          border: 1px solid #8B0000;
-          padding: 0.5rem 1rem;
+          border: 1px solid #C19A6B;
+          padding: 0.7rem 1.5rem;
+          font-family: 'Cinzel', serif;
           transition: all 0.3s;
         }
         .back-link:hover {
-          background: #8B0000;
-          color: white;
+          background: #6E3B3B;
+          color: #E8D8B0;
         }
 
         /* Mobile responsiveness */
@@ -190,15 +208,15 @@ app.get('/history', (req, res) => {
     </head>
     <body>
       <div class="container">
-        <h1>History of the Roman Empire</h1>
+        <h1>IMPERIAL CHRONICLES OF ROME</h1>
         
         <!-- Event 1: Foundation of Rome -->
         <div class="timeline-event">
           <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Roman Forum">
           <div class="event-content">
             <div class="event-year">753 BC</div>
-            <h2 class="event-title">Foundation of Rome</h2>
-            <p>According to legend, Romulus and Remus founded Rome on the Palatine Hill. Romulus became the first king after killing Remus in a dispute.</p>
+            <h2 class="event-title">THE FOUNDING</h2>
+            <p class="event-description">From myth to reality: Romulus and Remus establish the Eternal City on the Palatine Hill, birthing an empire destined to shape the world.</p>
           </div>
         </div>
 
@@ -207,8 +225,8 @@ app.get('/history', (req, res) => {
           <img src="https://images.unsplash.com/photo-1570485071665-9718d7ef1d1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Roman Senate">
           <div class="event-content">
             <div class="event-year">509 BC</div>
-            <h2 class="event-title">Roman Republic</h2>
-            <p>The monarchy was overthrown, and Rome became a republic governed by the Senate and elected magistrates.</p>
+            <h2 class="event-title">THE REPUBLIC</h2>
+            <p class="event-description">Kings fall, senators rise. Rome becomes a republic—a crucible of law, ambition, and conquest.</p>
           </div>
         </div>
 
@@ -217,12 +235,12 @@ app.get('/history', (req, res) => {
           <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Augustus Statue">
           <div class="event-content">
             <div class="event-year">27 BC</div>
-            <h2 class="event-title">Augustus Reign</h2>
-            <p>Octavian, later known as Augustus, became the first Roman Emperor, marking the beginning of the Roman Empire.</p>
+            <h2 class="event-title">THE EMPIRE</h2>
+            <p class="event-description">Augustus ascends. The Republic dies, and Rome enters its golden age of emperors, legions, and eternal glory.</p>
           </div>
         </div>
 
-        <a href="/" class="back-link">← Back to SPQR</a>
+        <a href="/" class="back-link">⮐ RETURN TO SPQR</a>
       </div>
     </body>
     </html>
