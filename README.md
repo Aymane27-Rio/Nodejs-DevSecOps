@@ -58,7 +58,7 @@ npm install
 ```
 
 Start the application
-To start the application, run the below command in the terminal:
+To start the application, run the following command in the terminal:
 
 ```bash
 npm start
