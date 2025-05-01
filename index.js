@@ -117,24 +117,21 @@ app.get('/history', (req, res) => {
           margin: 0;
           padding: 0;
           font-family: 'Noto Serif', serif;
-          background: 
-            linear-gradient(rgba(0, 0, 0, 0.7), 
-            url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
-          background-size: cover;
-          color: #FFF;
+          background: #F5E7C1; /* Roman travertine/parchment color */
+          color: #3A3226; /* Dark brown for text */
           line-height: 1.6;
-          min-height: 100vh;
         }
         .container {
           max-width: 900px;
           margin: 0 auto;
           padding: 2rem;
-          background: rgba(0, 0, 0, 0.7);
+          background: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
-          color: #E8C070;
+          color: #8B0000; /* Roman red */
           text-align: center;
-          border-bottom: 2px solid #8B0000;
+          border-bottom: 2px solid #E8C070; /* Gold accent */
           padding-bottom: 1rem;
         }
         .timeline-event {
@@ -142,40 +139,44 @@ app.get('/history', (req, res) => {
           display: flex;
           align-items: center;
           gap: 2rem;
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.9);
+          border-left: 4px solid #8B0000;
         }
         .event-image {
           width: 200px;
           height: 150px;
           object-fit: cover;
-          border: 3px solid #8B0000;
-          opacity: 0.9;
+          border: 2px solid #E8C070;
         }
         .event-content {
           flex: 1;
         }
         .event-year {
           font-weight: bold;
-          color: #E8C070;
+          color: #8B0000;
           font-size: 1.2rem;
         }
         .event-title {
           font-size: 1.5rem;
           margin: 0.5rem 0;
-          color: #FFF;
+          color: #3A3226;
         }
         .back-link {
           display: inline-block;
           margin-top: 2rem;
-          color: #E8C070;
+          color: #8B0000;
           text-decoration: none;
-          border: 1px solid #E8C070;
+          border: 1px solid #8B0000;
           padding: 0.5rem 1rem;
+          transition: all 0.3s;
         }
         .back-link:hover {
-          background: rgba(232, 192, 112, 0.2);
+          background: #8B0000;
+          color: white;
         }
 
-        /* Responsive fixes */
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
           .timeline-event {
             flex-direction: column;
@@ -227,7 +228,6 @@ app.get('/history', (req, res) => {
     </html>
   `);
 });
-
 
 
 app.listen(80, () => console.log('Server running on port 80'));
