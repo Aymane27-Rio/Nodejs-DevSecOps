@@ -1,6 +1,6 @@
 # Simple NodeJs Repo
 
-Simple node.js app that servers  "Welcome to CLOUD ASEEM  & Credit with Thanks to - A Monk in Cloud"
+Simple node.js app that tests if a website is functioning properly
 
 ## Step 1: Install NodeJS and NPM using nvm
 Install node version manager (nvm) by typing the following at the command line interface.
