@@ -1,35 +1,11 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 
-// Roman Empire data
-const romanHistory = [
-  { 
-    year: "753 BC", 
-    title: "Foundation of Rome", 
-    description: "Romulus and Remus establish Rome. Romulus becomes the first king.",
-    figures: ["Romulus", "Remus"]
-  },
-  { 
-    year: "509 BC", 
-    title: "Roman Republic", 
-    description: "Overthrow of the monarchy. Establishment of the Republic.",
-    figures: ["Lucius Junius Brutus"]
-  },
-  { 
-    year: "27 BC", 
-    title: "Augustus Reign", 
-    description: "Octavian becomes Augustus, the first Roman Emperor.",
-    figures: ["Augustus", "Mark Antony", "Cleopatra"]
-  },
-  { 
-    year: "476 AD", 
-    title: "Fall of Western Rome", 
-    description: "Odoacer deposes Romulus Augustulus, marking the end of the Western Empire.",
-    figures: ["Odoacer", "Romulus Augustulus"]
-  }
-];
+// Serve static files (CSS/Images) from a 'public' folder (optional but recommended)
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve HTML directly
+// Welcome Page
 app.get('/', (req, res) => {
   res.send(`
     <!DOCTYPE html>
@@ -37,68 +13,81 @@ app.get('/', (req, res) => {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Roman Empire History</title>
+      <title>Roman Empire Portal</title>
       <style>
         body {
-          font-family: 'Times New Roman', serif;
-          background: #f5f5f5;
           margin: 0;
-          padding: 20px;
-          color: #333;
-        }
-        .container {
-          max-width: 800px;
-          margin: 0 auto;
-          background: white;
-          padding: 20px;
-          box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-          color: #8B0000;
+          padding: 0;
+          font-family: 'Times New Roman', serif;
+          background: url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+          background-size: cover;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          color: #FFF;
           text-align: center;
         }
-        .timeline {
-          position: relative;
-          padding-left: 50px;
+        .overlay {
+          background: rgba(0, 0, 0, 0.7);
+          padding: 2rem;
+          border-radius: 10px;
+          max-width: 800px;
         }
-        .event {
-          margin-bottom: 30px;
-          position: relative;
+        h1 {
+          font-family: 'Trajan Pro', 'Times New Roman', serif;
+          font-size: 4rem;
+          margin: 0;
+          color: #E8C070;
+          text-shadow: 2px 2px 4px #000;
         }
-        .year {
-          position: absolute;
-          left: -50px;
-          top: 0;
-          font-weight: bold;
-          color: #8B0000;
-        }
-        .figures {
+        .subtitle {
           font-style: italic;
-          color: #555;
+          margin-bottom: 2rem;
         }
-        .figures::before {
-          content: "Key Figures: ";
-          font-weight: bold;
+        .buttons {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+        }
+        .btn {
+          padding: 0.8rem 1.5rem;
+          background: #8B0000;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          font-size: 1.1rem;
+          cursor: pointer;
+          transition: background 0.3s;
+          text-decoration: none;
+        }
+        .btn:hover {
+          background: #A52A2A;
         }
       </style>
     </head>
     <body>
-      <div class="container">
-        <h1>🏛️ Roman Empire Timeline</h1>
-        <div class="timeline" id="timeline">
-          ${romanHistory.map(event => `
-            <div class="event">
-              <div class="year">${event.year}</div>
-              <h3>${event.title}</h3>
-              <p>${event.description}</p>
-              <p class="figures">${event.figures.join(', ')}</p>
-            </div>
-          `).join('')}
+      <div class="overlay">
+        <h1>SPQR</h1>
+        <p class="subtitle">Senatus Populusque Romanus</p>
+        <div class="buttons">
+          <a href="/history" class="btn">Explore the History</a>
+          <a href="/figures" class="btn">Meet the Figures</a>
         </div>
       </div>
     </body>
     </html>
   `);
+});
+
+// Placeholder routes for other pages (to be filled later)
+app.get('/history', (req, res) => {
+  res.send('<h1>Roman Empire History (Under Construction)</h1><a href="/">Go Back</a>');
+});
+
+app.get('/figures', (req, res) => {
+  res.send('<h1>Notable Figures (Under Construction)</h1><a href="/">Go Back</a>');
 });
 
 app.listen(80, () => console.log('Server running on port 80'));
