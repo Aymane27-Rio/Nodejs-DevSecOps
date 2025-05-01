@@ -1,10 +1,7 @@
 const express = require('express');
-const path = require('path');
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Roman Empire data (simplified)
+// Roman Empire data
 const romanHistory = [
   { 
     year: "753 BC", 
@@ -32,14 +29,76 @@ const romanHistory = [
   }
 ];
 
-// API endpoint to fetch history
-app.get('/api/history', (req, res) => {
-  res.json(romanHistory);
-});
-
-// Serve HTML
+// Serve HTML directly
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Roman Empire History</title>
+      <style>
+        body {
+          font-family: 'Times New Roman', serif;
+          background: #f5f5f5;
+          margin: 0;
+          padding: 20px;
+          color: #333;
+        }
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          background: white;
+          padding: 20px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+          color: #8B0000;
+          text-align: center;
+        }
+        .timeline {
+          position: relative;
+          padding-left: 50px;
+        }
+        .event {
+          margin-bottom: 30px;
+          position: relative;
+        }
+        .year {
+          position: absolute;
+          left: -50px;
+          top: 0;
+          font-weight: bold;
+          color: #8B0000;
+        }
+        .figures {
+          font-style: italic;
+          color: #555;
+        }
+        .figures::before {
+          content: "Key Figures: ";
+          font-weight: bold;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>🏛️ Roman Empire Timeline</h1>
+        <div class="timeline" id="timeline">
+          ${romanHistory.map(event => `
+            <div class="event">
+              <div class="year">${event.year}</div>
+              <h3>${event.title}</h3>
+              <p>${event.description}</p>
+              <p class="figures">${event.figures.join(', ')}</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </body>
+    </html>
+  `);
 });
 
 app.listen(80, () => console.log('Server running on port 80'));
