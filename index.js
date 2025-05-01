@@ -15,12 +15,15 @@ const knowledgeBase = {
 };
 
 // Chatbot API endpoint
-app.post('/api/chat', (req, res) => {
-  const userPrompt = req.body.prompt.toLowerCase();
-  let response = knowledgeBase[userPrompt] || 
-    "I don’t have a guide for that yet. Try 'learn javascript' or 'learn devsecops'!";
-  
-  res.json({ response });
+const OpenAI = require('openai');
+const openai = new OpenAI(process.env.OPENAI_KEY);
+
+app.post('/api/chat', async (req, res) => {
+  const response = await openai.chat.completions.create({
+    model: "gpt-3.5-turbo",
+    messages: [{ role: "user", content: req.body.prompt }],
+  });
+  res.json({ response: response.choices[0].message.content });
 });
 
 // User tips API (store in Firebase or a JSON file)
