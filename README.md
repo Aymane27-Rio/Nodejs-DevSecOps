@@ -63,4 +63,8 @@ To start the application, run the below command in the terminal:
 ```bash
 npm start
 ```
+If you want to run it in the background:
 
+```bash
+nohup npm start &
+```
