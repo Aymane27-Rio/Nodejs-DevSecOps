@@ -1,28 +1,43 @@
-const http = require('http');
-const fs = require('fs'); // To serve HTML files
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const app = express();
 
-const server = http.createServer((req, res) => {
-  // Security headers (DevSecOps touch)
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'DENY');
+// Middleware
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-  // Serve HTML file
-  if (req.url === '/') {
-    fs.readFile('./index.html', (err, data) => {
-      if (err) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Internal Server Error');
-      } else {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(data);
-      }
-    });
-  } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('404 Not Found');
-  }
+// Mock "knowledge base" for the mentor bot (or use OpenAI API)
+const knowledgeBase = {
+  "learn javascript": "Step 1: Learn basics on MDN. Step 2: Build a small project. Step 3: Learn frameworks like React.",
+  "learn devsecops": "Step 1: Master Linux. Step 2: Learn CI/CD with Jenkins. Step 3: Study AWS security.",
+  // Add more topics
+};
+
+// Chatbot API endpoint
+app.post('/api/chat', (req, res) => {
+  const userPrompt = req.body.prompt.toLowerCase();
+  let response = knowledgeBase[userPrompt] || 
+    "I don’t have a guide for that yet. Try 'learn javascript' or 'learn devsecops'!";
+  
+  res.json({ response });
 });
 
-server.listen(80, () => {
-  console.log('Server running on port 80');
+// User tips API (store in Firebase or a JSON file)
+let userTips = [];
+app.post('/api/tips', (req, res) => {
+  const { topic, tip } = req.body;
+  userTips.push({ topic, tip });
+  res.json({ success: true });
 });
+
+app.get('/api/tips', (req, res) => {
+  res.json({ tips: userTips });
+});
+
+// Serve HTML
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.listen(80, () => console.log('Server running on port 80'));
