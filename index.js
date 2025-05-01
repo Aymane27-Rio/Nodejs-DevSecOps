@@ -119,10 +119,11 @@ app.get('/history', (req, res) => {
           font-family: 'Noto Serif', serif;
           background: 
             linear-gradient(rgba(0, 0, 0, 0.7), 
-            url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+            url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
           background-size: cover;
           color: #FFF;
           line-height: 1.6;
+          min-height: 100vh;
         }
         .container {
           max-width: 900px;
@@ -173,15 +174,26 @@ app.get('/history', (req, res) => {
         .back-link:hover {
           background: rgba(232, 192, 112, 0.2);
         }
+
+        /* Responsive fixes */
+        @media (max-width: 768px) {
+          .timeline-event {
+            flex-direction: column;
+          }
+          .event-image {
+            width: 100%;
+            height: auto;
+          }
+        }
       </style>
     </head>
     <body>
       <div class="container">
         <h1>History of the Roman Empire</h1>
         
-        <!-- Event 1 -->
+        <!-- Event 1: Foundation of Rome -->
         <div class="timeline-event">
-          <img src="https://images.unsplash.com/photo-1520409799395-8c405fdcb4e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Roman Forum">
+          <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Roman Forum">
           <div class="event-content">
             <div class="event-year">753 BC</div>
             <h2 class="event-title">Foundation of Rome</h2>
@@ -189,9 +201,9 @@ app.get('/history', (req, res) => {
           </div>
         </div>
 
-        <!-- Event 2 -->
+        <!-- Event 2: Roman Republic -->
         <div class="timeline-event">
-          <img src="https://images.unsplash.com/photo-1570485071665-9718d7ef1d1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Roman Republic">
+          <img src="https://images.unsplash.com/photo-1570485071665-9718d7ef1d1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Roman Senate">
           <div class="event-content">
             <div class="event-year">509 BC</div>
             <h2 class="event-title">Roman Republic</h2>
@@ -199,9 +211,9 @@ app.get('/history', (req, res) => {
           </div>
         </div>
 
-        <!-- Event 3 -->
+        <!-- Event 3: Augustus -->
         <div class="timeline-event">
-          <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Augustus">
+          <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Augustus Statue">
           <div class="event-content">
             <div class="event-year">27 BC</div>
             <h2 class="event-title">Augustus Reign</h2>
@@ -216,7 +228,6 @@ app.get('/history', (req, res) => {
   `);
 });
 
-// Figures Page (unchanged placeholder)
-app.get('/figures', (req, res) => { /* ... */ });
+
 
 app.listen(80, () => console.log('Server running on port 80'));
