@@ -46,7 +46,7 @@ This command will print the git version in the terminal.
 Run below command to clone the code repository from Github:
 
 ```bash
-Git Clone : https://github.com/Aymane27-Rio/Nodejs-DevSecOps.git
+git clone https://github.com/Aymane27-Rio/Nodejs-DevSecOps.git
 Branch Master.
 ```
 
