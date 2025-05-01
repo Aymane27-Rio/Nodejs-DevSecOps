@@ -3,60 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevSecOps Project</title>
+  <title>MentorBot - Learn Anything</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      background: #f0f2f5;
       margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
+      padding: 20px;
     }
     .container {
+      max-width: 800px;
+      margin: 0 auto;
       background: white;
+      padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
-      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    h1 {
-      color: #333;
+    #chat-box {
+      height: 300px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      overflow-y: scroll;
+      margin-bottom: 10px;
     }
-    p {
-      color: #666;
+    #user-input {
+      width: 70%;
+      padding: 10px;
     }
-    .tech-stack {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
+    button {
+      padding: 10px 15px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
     }
-    .tech-item {
-      background: #e0e7ff;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-weight: bold;
-      color: #4f46e5;
+    .tip-section {
+      margin-top: 30px;
+      padding: 15px;
+      background: #e9f5ff;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>My First DevSecOps Pipeline</h1>
-    <p>This website is deployed automatically via Jenkins CI/CD, with security baked in.</p>
+    <h1>👨‍🏫 MentorBot</h1>
+    <p><i>"What do you want to learn today?"</i></p>
     
-    <div class="tech-stack">
-      <span class="tech-item">AWS EC2</span>
-      <span class="tech-item">Jenkins</span>
-      <span class="tech-item">Node.js</span>
-      <span class="tech-item">GitHub Webhooks</span>
-    </div>
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="E.g., 'learn javascript'">
+    <button onclick="sendMessage()">Ask</button>
 
-    <p><strong>Security Features:</strong> Hardened security groups, automated scans, and secure headers.</p>
+    <div class="tip-section">
+      <h3>💡 Share Your Knowledge</h3>
+      <input type="text" id="tip-topic" placeholder="Topic (e.g., 'JavaScript')">
+      <textarea id="tip-content" placeholder="Your tip..."></textarea>
+      <button onclick="submitTip()">Submit Tip</button>
+    </div>
   </div>
+
+  <script>
+    const chatBox = document.getElementById('chat-box');
+    
+    function addMessage(sender, message) {
+      chatBox.innerHTML += `<p><strong>${sender}:</strong> ${message}</p>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Chat with the bot
+    function sendMessage() {
+      const prompt = document.getElementById('user-input').value;
+      if (!prompt) return;
+      
+      addMessage('You', prompt);
+      document.getElementById('user-input').value = '';
+      
+      fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+      })
+        .then(res => res.json())
+        .then(data => addMessage('MentorBot', data.response));
+    }
+
+    // Submit a tip/advice
+    function submitTip() {
+      const topic = document.getElementById('tip-topic').value;
+      const tip = document.getElementById('tip-content').value;
+      
+      fetch('/api/tips', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic, tip })
+      })
+        .then(res => res.json())
+        .then(data => alert('Tip submitted! Thank you.'));
+    }
+  </script>
 </body>
 </html>
