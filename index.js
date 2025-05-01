@@ -79,25 +79,7 @@ app.get('/', (req, res) => {
   `);
 });
 
-// Placeholder Routes
-app.get('/history', (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Roman History</title>
-      <style>
-        body { font-family: 'Times New Roman', serif; padding: 2rem; }
-        a { color: #8B0000; }
-      </style>
-    </head>
-    <body>
-      <h1>📜 Roman History (Coming Soon)</h1>
-      <a href="/">← Back to SPQR</a>
-    </body>
-    </html>
-  `);
-});
+
 
 app.get('/figures', (req, res) => {
   res.send(`
@@ -118,9 +100,9 @@ app.get('/figures', (req, res) => {
   `);
 });
 
-app.listen(80, () => console.log('Server running on port 80'));
 
-// Roman History Page (New!)
+
+// Roman History Page
 app.get('/history', (req, res) => {
   res.send(`
     <!DOCTYPE html>
