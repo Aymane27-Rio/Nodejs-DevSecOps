@@ -1,41 +1,40 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 
-// Middleware
-app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Mock "knowledge base" for the mentor bot (or use OpenAI API)
-const knowledgeBase = {
-  "learn javascript": "Step 1: Learn basics on MDN. Step 2: Build a small project. Step 3: Learn frameworks like React.",
-  "learn devsecops": "Step 1: Master Linux. Step 2: Learn CI/CD with Jenkins. Step 3: Study AWS security.",
-  // Add more topics
-};
+// Roman Empire data (simplified)
+const romanHistory = [
+  { 
+    year: "753 BC", 
+    title: "Foundation of Rome", 
+    description: "Romulus and Remus establish Rome. Romulus becomes the first king.",
+    figures: ["Romulus", "Remus"]
+  },
+  { 
+    year: "509 BC", 
+    title: "Roman Republic", 
+    description: "Overthrow of the monarchy. Establishment of the Republic.",
+    figures: ["Lucius Junius Brutus"]
+  },
+  { 
+    year: "27 BC", 
+    title: "Augustus Reign", 
+    description: "Octavian becomes Augustus, the first Roman Emperor.",
+    figures: ["Augustus", "Mark Antony", "Cleopatra"]
+  },
+  { 
+    year: "476 AD", 
+    title: "Fall of Western Rome", 
+    description: "Odoacer deposes Romulus Augustulus, marking the end of the Western Empire.",
+    figures: ["Odoacer", "Romulus Augustulus"]
+  }
+];
 
-// Chatbot API endpoint
-const OpenAI = require('openai');
-const openai = new OpenAI(process.env.OPENAI_KEY);
-
-app.post('/api/chat', async (req, res) => {
-  const response = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: req.body.prompt }],
-  });
-  res.json({ response: response.choices[0].message.content });
-});
-
-// User tips API (store in Firebase or a JSON file)
-let userTips = [];
-app.post('/api/tips', (req, res) => {
-  const { topic, tip } = req.body;
-  userTips.push({ topic, tip });
-  res.json({ success: true });
-});
-
-app.get('/api/tips', (req, res) => {
-  res.json({ tips: userTips });
+// API endpoint to fetch history
+app.get('/api/history', (req, res) => {
+  res.json(romanHistory);
 });
 
 // Serve HTML
