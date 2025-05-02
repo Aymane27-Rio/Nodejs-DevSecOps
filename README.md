@@ -58,9 +58,9 @@ npm install
 npm install express
 ```
 
-Start the application
 To start the application, run the following command in the terminal:
 
 ```bash
 node index.js
 ```
+Go then to a web browers and type http://localhost:80
