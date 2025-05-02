@@ -175,43 +175,226 @@ app.get('/figures', (req, res) => {
             grid-template-columns: 1fr;
           }
         }
+        .figure-card {
+          background: rgba(58, 40, 33, 0.7);
+          border: 1px solid #6E3B3B;
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+        }
+        .figure-header {
+          display: flex;
+          gap: 1.5rem;
+          align-items: center;
+          margin-bottom: 1rem;
+        }
+        .figure-image {
+          width: 120px;
+          height: 120px;
+          object-fit: cover;
+          border: 3px solid #C19A6B;
+          filter: sepia(30%) brightness(90%);
+        }
+        .figure-name {
+          font-family: 'Cinzel', serif;
+          font-size: 1.8rem;
+          color: #E8D8B0;
+          margin: 0;
+        }
+        .figure-title {
+          font-style: italic;
+          color: #C19A6B;
+          margin: 0.3rem 0;
+        }
+        .figure-dates {
+          color: #C19A6B;
+          font-size: 0.9rem;
+        }
+        .figure-bio {
+          margin: 1rem 0;
+          line-height: 1.6;
+        }
+        .figure-highlights {
+          margin: 1rem 0;
+          padding-left: 1rem;
+          border-left: 3px solid #6E3B3B;
+        }
+        .highlight-item {
+          margin: 0.5rem 0;
+        }
+
+        /* Sources section */
+        .sources {
+          margin-top: 3rem;
+          padding: 1.5rem;
+          background: rgba(42, 31, 29, 0.9);
+          border-top: 2px solid #C19A6B;
+        }
+        .sources-title {
+          font-family: 'Cinzel', serif;
+          color: #C19A6B;
+          margin-bottom: 1rem;
+        }
+        .sources-list {
+          list-style-type: none;
+          padding: 0;
+        }
+        .sources-list a {
+          color: #E8D8B0;
+          text-decoration: none;
+          border-bottom: 1px dashed #C19A6B;
+          transition: all 0.3s;
+        }
+        .sources-list a:hover {
+          color: #C19A6B;
+          border-bottom-color: #E8D8B0;
+        }
       </style>
     </head>
     <body>
       <div class="container">
-        <h1>IMMORTALIS LEGIONIS</h1>
-        <div class="gallery">
-          <!-- Figure 1: Julius Caesar -->
-          <div class="figure-card">
-            <img src="https://images.unsplash.com/photo-1634915588858-843592b25e3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" class="figure-image" alt="Julius Caesar">
-            <h2 class="figure-name">IVLIVS CAESAR</h2>
-            <p class="figure-title">Dictator Perpetuo</p>
-            <p class="figure-bio">Conqueror of Gaul, reformer of Rome, and victim of the Ides of March. His death sparked the end of the Republic.</p>
-          </div>
+        <h1>PANTHEON ROMANORUM</h1>
 
-          <!-- Figure 2: Augustus -->
-          <div class="figure-card">
-            <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" class="figure-image" alt="Augustus">
-            <h2 class="figure-name">AVGVSTVS</h2>
-            <p class="figure-title">First Emperor</p>
-            <p class="figure-bio">Rome's first emperor, who brought the Pax Romana and transformed the city with marble.</p>
-          </div>
+        <!-- Late Republic -->
+        <h2 class="era-header">LATE REPUBLIC (133–27 BC)</h2>
 
-          <!-- Figure 3: Cicero -->
-          <div class="figure-card">
-            <img src="https://images.unsplash.com/photo-1634743973521-0d1e04b8aeb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" class="figure-image" alt="Cicero">
-            <h2 class="figure-name">CICERO</h2>
-            <p class="figure-title">Orator of the Republic</p>
-            <p class="figure-bio">Rome's greatest orator, whose speeches and letters define the dying Republic.</p>
+        <!-- Julius Caesar -->
+        <div class="figure-card">
+          <div class="figure-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Gaius_Iulius_Caesar_%28Vatican_Museum%29.jpg/250px-Gaius_Iulius_Caesar_%28Vatican_Museum%29.jpg" class="figure-image" alt="Julius Caesar">
+            <div>
+              <h2 class="figure-name">IVLIVS CAESAR</h2>
+              <p class="figure-title">Dictator Perpetuo</p>
+              <p class="figure-dates">100–44 BC</p>
+            </div>
           </div>
+          <div class="figure-bio">
+            Military genius and populist reformer whose assassination transformed Rome from republic to empire. Conquered Gaul, defeated Pompey, and initiated the Julian calendar.
+          </div>
+          <div class="figure-highlights">
+            <div class="highlight-item">Crossed the Rubicon in 49 BC ("Alea iacta est")</div>
+            <div class="highlight-item">Authored <i>Commentarii de Bello Gallico</i></div>
+            <div class="highlight-item">Assassinated on the Ides of March by 60 senators</div>
+            <div class="highlight-item">Posthumously deified as Divus Iulius</div>
+          </div>
+        </div>
 
-          <!-- Figure 4: Trajan -->
-          <div class="figure-card">
-            <img src="https://images.unsplash.com/photo-1634743973568-5b0a9b5e9b0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80" class="figure-image" alt="Trajan">
-            <h2 class="figure-name">TRAIANVS</h2>
-            <p class="figure-title">Optimus Princeps</p>
-            <p class="figure-bio">Soldier-emperor who led Rome to its greatest territorial extent.</p>
+        <!-- Cicero -->
+        <div class="figure-card">
+          <div class="figure-header">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSaoKHDx86dnxpC6HQssfSZkr4vU4D_kypEb6HlMt_Ju2lnCHFTi_xINAY9naGfaus_dG_pTbOb578bQTmfRKKVFg" class="figure-image" alt="Cicero">
+            <div>
+              <h2 class="figure-name">CICERO</h2>
+              <p class="figure-title">Defender of the Republic</p>
+              <p class="figure-dates">106–43 BC</p>
+            </div>
           </div>
+          <div class="figure-bio">
+            Rome's greatest orator whose writings preserved Stoic philosophy and republican ideals. Exposed Catiline's conspiracy but was executed in the Proscriptions.
+          </div>
+          <div class="figure-highlights">
+            <div class="highlight-item">Wrote <i>De Re Publica</i> and 900+ letters</div>
+            <div class="highlight-item">Defined Latin prose style for centuries</div>
+            <div class="highlight-item">Hands and head displayed in the Forum by Antony</div>
+          </div>
+        </div>
+
+        <!-- Early Empire -->
+        <h2 class="era-header">EARLY EMPIRE (27 BC–96 AD)</h2>
+
+        <!-- Augustus -->
+        <div class="figure-card">
+          <div class="figure-header">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReyw-KgzoIu-Dh5maa-3Kx3EinF_N7Nle18GeiWQGaKGCAnbjk9j_K34In6mmjMCSYbest4X4RKyEHMltFih9l2A" class="figure-image" alt="Augustus">
+            <div>
+              <h2 class="figure-name">AVGVSTVS</h2>
+              <p class="figure-title">First Emperor</p>
+              <p class="figure-dates">63 BC–14 AD</p>
+            </div>
+          </div>
+          <div class="figure-bio">
+            Formerly Octavian, he defeated Antony & Cleopatra to become Rome's first emperor. Established the Pax Romana and rebuilt Rome as a marble capital.
+          </div>
+          <div class="figure-highlights">
+            <div class="highlight-item">"Found Rome a city of brick, left it marble"</div>
+            <div class="highlight-item">Created the Praetorian Guard and imperial bureaucracy</div>
+            <div class="highlight-item">His <i>Res Gestae</i> remains inscribed across Anatolia</div>
+            <div class="highlight-item">Died at 75 after 40-year reign</div>
+          </div>
+        </div>
+
+        <!-- Claudius -->
+        <div class="figure-card">
+          <div class="figure-header">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR3yEeb0op6mTrk_oiIIT5NmNgHGYSyy2bDk8JNoaW8NOo7oo1RlDaz6snzs1PZ10lVziBQnCnRi7ALDFJgawKGMg" class="figure-image" alt="Claudius">
+            <div>
+              <h2 class="figure-name">CLAUDIVS</h2>
+              <p class="figure-title">The Scholar-Emperor</p>
+              <p class="figure-dates">10 BC–54 AD</p>
+            </div>
+          </div>
+          <div class="figure-bio">
+            Overcame physical disabilities to become emperor. Conquered Britain and reformed the legal system while surviving palace intrigues.
+          </div>
+          <div class="figure-highlights">
+            <div class="highlight-item">Wrote 20-volume Etruscan history (lost)</div>
+            <div class="highlight-item">Built Portus harbor and Claudian Aqueduct</div>
+            <div class="highlight-item">Likely poisoned by wife Agrippina for Nero</div>
+          </div>
+        </div>
+
+        <!-- High Empire -->
+        <h2 class="era-header">HIGH EMPIRE (96–192 AD)</h2>
+
+        <!-- Trajan -->
+        <div class="figure-card">
+          <div class="figure-header">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSOIszMDicomBJtfIbmD7wdm4WDgCcQX6No-Kqui4mJfSKh-4ZUP5vk1PIv84L5xccPtOBZrumeglEWzQmcYifE1g" class="figure-image" alt="Trajan">
+            <div>
+              <h2 class="figure-name">TRAIANVS</h2>
+              <p class="figure-title">Optimus Princeps</p>
+              <p class="figure-dates">53–117 AD</p>
+            </div>
+          </div>
+          <div class="figure-bio">
+            Soldier-emperor who expanded Rome to its greatest territorial extent. Known for his column, forum, and welfare system (alimenta).
+          </div>
+          <div class="figure-highlights">
+            <div class="highlight-item">Conquered Dacia (modern Romania)</div>
+            <div class="highlight-item">First emperor from the provinces (Hispania)</div>
+            <div class="highlight-item">Died returning from Parthian campaign</div>
+          </div>
+        </div>
+
+        <!-- Marcus Aurelius -->
+        <div class="figure-card">
+          <div class="figure-header">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ_F-iW_NIT2nAPt0NnrbQIXyCGIaO9d3DF35rPWLKMXTeWUI0fOzEPG-0PT6Av7PgjfkkowKKZ5Hr57vNuPMUV0w" class="figure-image" alt="Marcus Aurelius">
+            <div>
+              <h2 class="figure-name">MARCVS AVRELIVS</h2>
+              <p class="figure-title">Philosopher-King</p>
+              <p class="figure-dates">121–180 AD</p>
+            </div>
+          </div>
+          <div class="figure-bio">
+            Stoic philosopher who ruled during the Marcomannic Wars. Wrote <i>Meditations</i> while campaigning on the Danube frontier.
+          </div>
+          <div class="figure-highlights">
+            <div class="highlight-item">Last of the "Five Good Emperors"</div>
+            <div class="highlight-item">Persecuted Christians despite personal ethics</div>
+            <div class="highlight-item">Died in Vindobona (Vienna) during plague</div>
+          </div>
+        </div>
+
+        <!-- Sources Section -->
+        <div class="sources">
+          <h3 class="sources-title">FONTES HISTORIAE</h3>
+          <ul class="sources-list">
+            <li>📜 <a href="https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/home.html" target="_blank">Suetonius: <i>Lives of the Caesars</i></a></li>
+            <li>🏛️ <a href="https://www.livius.org/sources/content/tacitus/" target="_blank">Tacitus: <i>Annals</i> & <i>Histories</i></a></li>
+            <li>⚔️ <a href="https://sourcebooks.fordham.edu/ancient/asbook09.asp" target="_blank">Cassius Dio: <i>Roman History</i></a></li>
+            <li>📚 <a href="https://oxfordre.com/classics/" target="_blank">Oxford Classical Dictionary</a></li>
+            <li>🖋️ <a href="https://www.loebclassics.com/view/LCL063/1919/volume.xml" target="_blank">Pliny the Younger: <i>Letters</i></a></li>
+          </ul>
         </div>
         <a href="/" class="back-link">⮐ RETURN TO SPQR</a>
       </div>
@@ -323,42 +506,124 @@ app.get('/history', (req, res) => {
             height: auto;
           }
         }
+        .era-section {
+          margin: 3rem 0;
+          background: rgba(58, 40, 33, 0.7);
+          padding: 2rem;
+          border-left: 5px solid #C19A6B;
+        }
+        .era-title {
+          font-family: 'Cinzel', serif;
+          color: #C19A6B;
+          font-size: 1.8rem;
+          border-bottom: 1px solid #6E3B3B;
+          padding-bottom: 0.5rem;
+        }
+        .era-description {
+          margin: 1rem 0;
+        }
+        .sub-event {
+          margin: 1.5rem 0;
+          padding-left: 1rem;
+          border-left: 3px solid #6E3B3B;
+        }
+        .sub-event-title {
+          font-weight: bold;
+          color: #E8D8B0;
+        }
+        
+        /* Sources section */
+        .sources {
+          margin-top: 4rem;
+          padding: 1.5rem;
+          background: rgba(42, 31, 29, 0.9);
+          border-top: 2px solid #C19A6B;
+        }
+        .sources-title {
+          font-family: 'Cinzel', serif;
+          color: #C19A6B;
+          margin-bottom: 1rem;
+        }
+        .sources-list {
+          list-style-type: none;
+          padding: 0;
+        }
+        .sources-list a {
+          color: #E8D8B0;
+          text-decoration: none;
+          border-bottom: 1px dashed #C19A6B;
+          transition: all 0.3s;
+        }
+        .sources-list a:hover {
+          color: #C19A6B;
+          border-bottom-color: #E8D8B0;
+        }
       </style>
     </head>
     <body>
       <div class="container">
-        <h1>IMPERIAL CHRONICLES OF ROME</h1>
         
-        <!-- Event 1: Foundation of Rome -->
-        <div class="timeline-event">
-          <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Roman Forum">
-          <div class="event-content">
-            <div class="event-year">753 BC</div>
-            <h2 class="event-title">THE FOUNDING</h2>
-            <p class="event-description">From myth to reality: Romulus and Remus establish the Eternal City on the Palatine Hill, birthing an empire destined to shape the world.</p>
+        <h1>ANNALES IMPERII ROMANI</h1>
+        
+        <!-- Kingdom Era -->
+        <div class="era-section">
+          <h2 class="era-title">THE ROMAN KINGDOM (753–509 BC)</h2>
+          <p class="era-description">Rome's legendary foundation and regal period under seven kings.</p>
+          
+          <div class="sub-event">
+            <div class="sub-event-title">Romulus and the Sabines</div>
+            <p>The Rape of the Sabine Women ensured Rome's population growth. Romulus ruled for 37 years before mysteriously vanishing in a storm, deified as Quirinus.</p>
+          </div>
+          
+          <div class="sub-event">
+            <div class="sub-event-title">Servian Reforms</div>
+            <p>King Servius Tullius organized the citizenry into centuries and tribes, laying groundwork for republican institutions.</p>
           </div>
         </div>
-
-        <!-- Event 2: Roman Republic -->
-        <div class="timeline-event">
-          <img src="https://images.unsplash.com/photo-1570485071665-9718d7ef1d1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Roman Senate">
-          <div class="event-content">
-            <div class="event-year">509 BC</div>
-            <h2 class="event-title">THE REPUBLIC</h2>
-            <p class="event-description">Kings fall, senators rise. Rome becomes a republic—a crucible of law, ambition, and conquest.</p>
+        
+        <!-- Republic Era -->
+        <div class="era-section">
+          <h2 class="era-title">THE REPUBLIC (509–27 BC)</h2>
+          <p class="era-description">The rise of senatorial governance and imperial expansion.</p>
+          
+          <div class="sub-event">
+            <div class="sub-event-title">Punic Wars (264–146 BC)</div>
+            <p>Three wars against Carthage culminated in the destruction of Carthage and Rome's dominance over the Mediterranean.</p>
+          </div>
+          
+          <div class="sub-event">
+            <div class="sub-event-title">Gracchi Reforms (133–121 BC)</div>
+            <p>Tiberius and Gaius Gracchus' populist land reforms led to their assassinations, signaling the Republic's decline.</p>
           </div>
         </div>
-
-        <!-- Event 3: Augustus -->
-        <div class="timeline-event">
-          <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="event-image" alt="Augustus Statue">
-          <div class="event-content">
-            <div class="event-year">27 BC</div>
-            <h2 class="event-title">THE EMPIRE</h2>
-            <p class="event-description">Augustus ascends. The Republic dies, and Rome enters its golden age of emperors, legions, and eternal glory.</p>
+        
+        <!-- Empire Era -->
+        <div class="era-section">
+          <h2 class="era-title">THE EMPIRE (27 BC–476 AD)</h2>
+          <p class="era-description">From Augustus to the fall of the West.</p>
+          
+          <div class="sub-event">
+            <div class="sub-event-title">Pax Romana (27 BC–180 AD)</div>
+            <p>200 years of relative peace and prosperity under emperors from Augustus to Marcus Aurelius.</p>
+          </div>
+          
+          <div class="sub-event">
+            <div class="sub-event-title">Crisis of the Third Century (235–284 AD)</div>
+            <p>Over 20 emperors in 50 years, plagued by invasions, civil wars, and economic collapse.</p>
           </div>
         </div>
-
+        
+        <!-- Sources Section -->
+        <div class="sources">
+          <h3 class="sources-title">FONTES HISTORIAE</h3>
+          <ul class="sources-list">
+            <li>📜 <a href="https://penelope.uchicago.edu/Thayer/E/Roman/home.html" target="_blank">LacusCurtius: Roman Texts</a></li>
+            <li>🏛️ <a href="https://www.livius.org/" target="_blank">Livius.org Articles</a></li>
+            <li>⚔️ <a href="https://www.britannica.com/place/Roman-Empire" target="_blank">Encyclopaedia Britannica</a></li>
+            <li>📚 <a href="https://www.loebclassics.com/" target="_blank">Loeb Classical Library</a></li>
+          </ul>
+        </div>
+        
         <a href="/" class="back-link">⮐ RETURN TO SPQR</a>
       </div>
     </body>
