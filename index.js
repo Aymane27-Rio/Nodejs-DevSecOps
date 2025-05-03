@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-// Welcome Page (SPQR Style) test
+// Welcome Page
 app.get('/', (req, res) => {
   res.send(`
     <!DOCTYPE html>
@@ -389,11 +389,11 @@ app.get('/figures', (req, res) => {
         <div class="sources">
           <h3 class="sources-title">FONTES HISTORIAE</h3>
           <ul class="sources-list">
-            <li>📜 <a href="https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/home.html" target="_blank">Suetonius: <i>Lives of the Caesars</i></a></li>
-            <li>🏛️ <a href="https://www.livius.org/sources/content/tacitus/" target="_blank">Tacitus: <i>Annals</i> & <i>Histories</i></a></li>
-            <li>⚔️ <a href="https://sourcebooks.fordham.edu/ancient/asbook09.asp" target="_blank">Cassius Dio: <i>Roman History</i></a></li>
-            <li>📚 <a href="https://oxfordre.com/classics/" target="_blank">Oxford Classical Dictionary</a></li>
-            <li>🖋️ <a href="https://www.loebclassics.com/view/LCL063/1919/volume.xml" target="_blank">Pliny the Younger: <i>Letters</i></a></li>
+            <li> <a href="https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/home.html" target="_blank">Suetonius: <i>Lives of the Caesars</i></a></li>
+            <li> <a href="https://www.livius.org/sources/content/tacitus/" target="_blank">Tacitus: <i>Annals</i> & <i>Histories</i></a></li>
+            <li> <a href="https://sourcebooks.fordham.edu/ancient/asbook09.asp" target="_blank">Cassius Dio: <i>Roman History</i></a></li>
+            <li> <a href="https://oxfordre.com/classics/" target="_blank">Oxford Classical Dictionary</a></li>
+            <li> <a href="https://www.loebclassics.com/view/LCL063/1919/volume.xml" target="_blank">Pliny the Younger: <i>Letters</i></a></li>
           </ul>
         </div>
         <a href="/" class="back-link">⮐ RETURN TO SPQR</a>
@@ -617,10 +617,10 @@ app.get('/history', (req, res) => {
         <div class="sources">
           <h3 class="sources-title">FONTES HISTORIAE</h3>
           <ul class="sources-list">
-            <li>📜 <a href="https://penelope.uchicago.edu/Thayer/E/Roman/home.html" target="_blank">LacusCurtius: Roman Texts</a></li>
-            <li>🏛️ <a href="https://www.livius.org/" target="_blank">Livius.org Articles</a></li>
-            <li>⚔️ <a href="https://www.britannica.com/place/Roman-Empire" target="_blank">Encyclopaedia Britannica</a></li>
-            <li>📚 <a href="https://www.loebclassics.com/" target="_blank">Loeb Classical Library</a></li>
+            <li> <a href="https://penelope.uchicago.edu/Thayer/E/Roman/home.html" target="_blank">LacusCurtius: Roman Texts</a></li>
+            <li> <a href="https://www.livius.org/" target="_blank">Livius.org Articles</a></li>
+            <li> <a href="https://www.britannica.com/place/Roman-Empire" target="_blank">Encyclopaedia Britannica</a></li>
+            <li> <a href="https://www.loebclassics.com/" target="_blank">Loeb Classical Library</a></li>
           </ul>
         </div>
         
