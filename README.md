@@ -1,66 +1,38 @@
-# Simple NodeJs Repo
+# 🏛️ SPQR Chronicles: Roman Empire Portal (Local Development)
 
-Simple node.js website for the History of the Roman Empire
+A self-contained Node.js project showcasing Roman history and figures. Run locally to explore the ancient world.
 
-## Step 1: Install NodeJS and NPM using nvm
-Install node version manager (nvm) by typing the following at the command line interface.
 
-```bash
-sudo su -
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-```
-Activate nvm by typing the following at the command line.
+##  Features
+- **Sacred Roman aesthetic**: Gold/maroon color scheme, Cinzel font
+- **Interactive timeline**: From Romulus to the Fall of Rome
+- **Figures gallery**: Detailed profiles of Caesar, Augustus and others
+- **Academic rigor**: Primary sources linked for all content
 
-```bash
-. ~/.nvm/nvm.sh
-```
+##  Tech Stack
+- **Backend**: Node.js + Express
+- **Frontend**: Vanilla HTML/CSS (no frameworks)
+- **Styling**: Roman-inspired design with hover effects
 
-Use nvm to install the latest version of Node.js by typing the following at the command line.
+##  Run Locally
 
-```bash
-nvm install node
-```
+### Prerequisites
+- Node.js v16+ [Download](https://nodejs.org/)
+- Git (optional)
 
-Test that node and npm are installed and running correctly by typing the following at the terminal:
-
-```bash
-node -v
-npm -v
-```
-
-## Step 2: Install Git and clone repository from GitHub
-To install git, run below commands in the terminal window:
-
-```bash
-sudo apt update -y
-sudo apt install git -y
-```
-
-Just to verify if system has git installed or not, please run below command in terminal:
-```bash
-git — version
-```
-
-This command will print the git version in the terminal.
-
-Run below command to clone the code repository from Github:
-
-```bash
-git clone https://github.com/Aymane27-Rio/Nodejs-DevSecOps.git
-Branch Master.
-```
-
-Get inside the directory and Install Packages
-
-```bash
-cd nodejs-on-ec2
-npm install
-npm install express
-```
-
-To start the application, run the following command in the terminal:
-
-```bash
-node index.js
-```
-Go then to a web browers and type http://localhost:80
+### Steps
+1. **Clone the repository** (or download ZIP):
+   ```bash
+   git clone https://github.com/yourusername/roman-empire-portal.git
+   cd roman-empire-portal
+   ```
+2. **Install dependencies** (Express)
+   ```bash
+   npm install express
+   ```
+3. **Run the server**
+   ```bash
+   node index.js
+   ```
+4. **Open in browser**
+   Visit http://localhost:80
