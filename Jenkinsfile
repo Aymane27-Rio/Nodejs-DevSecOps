@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Stage-2 , Git clone scm') {
             steps {
-                git 'https://github.com/Aseemakram19/nodejs-on-ec2-youtube.git'
+                git 'https://github.com/Aymane27-Rio/Nodejs-DevSecOps.git'
             }
         }
         stage('Stage-3 , npm install') {
